@@ -12,4 +12,9 @@ public class MainController {
     public String printSpring() {
      return "점프 투 스프링 부트";
     }
+
+    @GetMapping("/")
+    public String root() {
+        return "redirect:/question/list";
+    }
 }
