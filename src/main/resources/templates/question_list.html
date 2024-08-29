@@ -1,0 +1,16 @@
+<h1 th:text="${question.subject}"></h1>
+<h3 th:text="${question.content}"></h3>
+<table>
+    <thead>
+    <tr>
+        <th>댓글</th>
+        <th>작성일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="answer : ${answerList}">
+        <td th:text="${answer.content}"></td>
+        <td th:text="${answer.createDate}"></td>
+    </tr>
+    </tbody>
+</table>
