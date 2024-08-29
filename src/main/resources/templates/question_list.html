@@ -1,16 +1,25 @@
-<h1 th:text="${question.subject}"></h1>
-<h3 th:text="${question.content}"></h3>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
 <table>
     <thead>
     <tr>
-        <th>댓글</th>
-        <th>작성일</th>
+        <th>제 목</th>
+        <th>작 성 일 시</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="answer : ${answerList}">
-        <td th:text="${answer.content}"></td>
-        <td th:text="${answer.createDate}"></td>
+    <tr th:each="question, index : ${questionList}">
+        <td>
+            <a th:href="@{|/question/detail/${question.id}|}" th:text="${question.subject}"></a>
+        </td>
+        <td th:text="${question.createDate}"></td>
     </tr>
     </tbody>
 </table>
+</body>
+</html>
