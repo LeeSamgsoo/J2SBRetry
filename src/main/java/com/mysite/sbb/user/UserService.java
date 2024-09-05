@@ -14,8 +14,8 @@ public class UserService {
     public SiteUser create(String username, String email, String password) {
         SiteUser user = new SiteUser();
         user.setUsername(username);
-        user.setPassword(password);
         user.setPassword(passwordEncoder.encode(password));
+        user.setEmail(email);
         this.userRepository.save(user);
         return user;
     }
