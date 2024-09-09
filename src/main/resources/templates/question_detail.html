@@ -18,6 +18,11 @@
                    sec:authorize="isAuthenticated()"
                    th:if="${question.author != null and #authentication.getPrincipal().getUsername() == question.author.username}"
                    th:text="수정하기"></a>
+                <a href="javascript:void(0);" class="delete btn btn-primary"
+                   th:data-uri="@{|/question/delete/${question.id}|}"
+                   sec:authrize="isAuthenticated()"
+                   th:if="${question.author != null and #authentication.getPrincipal().getUsername() == question.author.username}"
+                   th:text="삭제하기"></a>
             </div>
         </div>
     </div>
@@ -46,4 +51,14 @@
         <input type="submit" value="답 변 등 록" class="btn btn-primary my-2">
     </form>
 </div>
+<script layout:fragment="script" type='text/javascript'>
+    const delete_elements = document.getElementsByClassName("delete");
+    Array.from(delete_elements).forEach(function(element) {
+        element.addEventListener('click', function() {
+            if(confirm("정말로 삭제하시겠습니까?")) {
+                location.href = this.dataset.uri;
+            };
+        });
+    });
+</script>
 </html>
